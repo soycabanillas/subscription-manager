@@ -1,13 +1,2 @@
-# Build results
-bin/
-obj/
-
-# User-specific files
-*.user
-
-# Logs
-*.log
-
-# Database files
-*.db
-*.sqlite
+# OS
+.DS_Store

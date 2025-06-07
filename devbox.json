@@ -1,0 +1,34 @@
+{
+    "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.14.2/.schema/devbox.schema.json",
+    "env": {
+      "DEVBOX_COREPACK_ENABLED": "true"
+    },
+    "packages": [
+      "nodejs@20.11.1"
+    ],
+    "shell": {
+      "init_hook": [
+        "echo '🚀 Dashboard Development Environment Ready!'",
+        "echo ''",
+        "echo '📦 Available Tools:'",
+        "echo '  Node.js:' $(node --version)",
+        "echo '  pnpm:' $(pnpm --version)",
+        "echo ''",
+        "# Set up environment variables",
+        "export NODE_OPTIONS='--max-old-space-size=4096'",
+        "export BROWSER=none",
+        "",
+        "# Auto-setup if needed",
+        "if [ -f frontend/package.json ] && [ ! -d frontend/node_modules ]; then",
+        "  echo '📥 Installing frontend dependencies...'",
+        "  cd frontend && pnpm install && cd ..",
+        "fi"
+      ],
+      "scripts": {
+        "test": [
+          "echo \"Error: no test specified\" && exit 1"
+        ]
+      }
+    }
+  }
+  
