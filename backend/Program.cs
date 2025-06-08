@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Http.HttpResults;
+using Backend.Services.Common;
+using Backend.Services.Customers;
+using Backend.Services.Statistics;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateSlimBuilder(args);
@@ -20,30 +22,23 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
-Todo[] sampleTodos =
-[
-    new(1, "Walk the dog"),
-    new(2, "Do the dishes", DateOnly.FromDateTime(DateTime.Now)),
-    new(3, "Do the laundry", DateOnly.FromDateTime(DateTime.Now.AddDays(1))),
-    new(4, "Clean www the bathroom"),
-    new(5, "Clean the car", DateOnly.FromDateTime(DateTime.Now.AddDays(2)))
-];
-
-var todosApi = app.MapGroup("/todos");
-todosApi.MapGet("/", () => sampleTodos)
-        .WithName("GetTodos");
-
-todosApi.MapGet("/{id}", Results<Ok<Todo>, NotFound> (int id) =>
-    sampleTodos.FirstOrDefault(a => a.Id == id) is { } todo
-        ? TypedResults.Ok(todo)
-        : TypedResults.NotFound())
-    .WithName("GetTodoById");
+// Map endpoints using extension methods
+app.MapDashboardEndpoints();
+app.MapCustomerEndpoints();
 
 app.Run();
 
-public record Todo(int Id, string? Title, DateOnly? DueBy = null, bool IsComplete = false);
-
-[JsonSerializable(typeof(Todo[]))]
+[JsonSerializable(typeof(CreateCustomerRequest))]
+[JsonSerializable(typeof(UpdateCustomerRequest))]
+[JsonSerializable(typeof(Customer))]
+[JsonSerializable(typeof(Customer[]))]
+[JsonSerializable(typeof(PaginatedResponse<Customer>))]
+[JsonSerializable(typeof(DashboardStats))]
+[JsonSerializable(typeof(ChartData))]
+[JsonSerializable(typeof(ChartData[]))]
+[JsonSerializable(typeof(List<ChartData>))]
+[JsonSerializable(typeof(DateTime?))]
+[JsonSerializable(typeof(DateOnly?))]
 internal partial class AppJsonSerializerContext : JsonSerializerContext
 {
 

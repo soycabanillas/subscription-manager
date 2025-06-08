@@ -40,7 +40,8 @@
                 "run",
                 "--project",
                 "${workspaceFolder}/backend/Backend.csproj",
-                "--no-launch-profile"
+                "--no-launch-profile",
+                "--verbose"
             ],
             "options": {
                 "cwd": "${workspaceFolder}/backend",
@@ -48,7 +49,14 @@
                     "ASPNETCORE_ENVIRONMENT": "Development"
                 }
             },
-            "problemMatcher": "$msCompile",
+            "problemMatcher": {
+                "base": "$msCompile",
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "^dotnet watch ⌚ Building",
+                    "endsPattern": "^.*Application started\\.|^.*Now listening on:"
+                }
+            },
             "isBackground": true,
             "runOptions": {
                 "instanceLimit": 1
