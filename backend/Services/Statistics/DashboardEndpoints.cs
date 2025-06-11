@@ -6,8 +6,8 @@ public static class DashboardEndpoints
 {
     public static void MapDashboardEndpoints(this WebApplication app)
     {
-        var dashboardApi = app.MapGroup("/api/dashboard").WithTags("Dashboard");
-        
+        var dashboardApi = app.MapGroup("/api/dashboard").WithTags("Dashboard").RequireAuthorization();
+
         dashboardApi.MapGet("/stats", () =>
         {
             var stats = new DashboardStats
@@ -28,10 +28,10 @@ public static class DashboardEndpoints
         {
             var startDate = from ?? DateTime.UtcNow.AddDays(-30);
             var endDate = to ?? DateTime.UtcNow;
-            
+
             var data = new List<ChartData>();
             var random = new Random();
-            
+
             for (var date = startDate; date <= endDate; date = date.AddDays(1))
             {
                 data.Add(new ChartData

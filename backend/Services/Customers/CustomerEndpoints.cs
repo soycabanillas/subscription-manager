@@ -16,7 +16,7 @@ public static class CustomerEndpoints
 
     public static void MapCustomerEndpoints(this WebApplication app)
     {
-        var customersApi = app.MapGroup("/api/customers").WithTags("Customers");
+        var customersApi = app.MapGroup("/api/customers").WithTags("Customers").RequireAuthorization();
 
         customersApi.MapGet("/", Results<Ok<PaginatedResponse<Customer>>, BadRequest> (int page = 1, int limit = 10, string? search = null, string? sortBy = null, string? sortOrder = "asc") =>
         {
