@@ -1,7 +1,9 @@
+using System.Security.Cryptography.X509Certificates;
 using System.Text.Json.Serialization;
 using Backend.Services.Common;
 using Backend.Services.Customers;
 using Backend.Services.Statistics;
+using Microsoft.Extensions.FileSystemGlobbing;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateSlimBuilder(args);
@@ -13,6 +15,11 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+if (builder.Environment.IsDevelopment())
+{
+    builder.WebHost.UseKestrelHttpsConfiguration();
+}
 
 var app = builder.Build();
 

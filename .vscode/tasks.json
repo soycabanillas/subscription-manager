@@ -126,7 +126,7 @@
                 "cwd": "${workspaceFolder}/backend",
                 "env": {
                     "ASPNETCORE_ENVIRONMENT": "Development",
-                    "ASPNETCORE_URLS": "http://localhost:5100"
+                    "ASPNETCORE_URLS": "http://localhost:5100;https://localhost:5101"
                 }
             },
             "presentation": {
