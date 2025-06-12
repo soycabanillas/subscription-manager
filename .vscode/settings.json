@@ -1,3 +1,10 @@
 {
-    "dotnet.defaultSolution": "backend/OutsetAPI.slnx"
+    "dotnet.defaultSolution": "backend/Backend.slnx",
+    "files.associations": {
+        "*.css": "tailwindcss"
+    },
+    "editor.quickSuggestions": {
+        "strings": "on"
+    },
+    "editor.formatOnSave": true
 }

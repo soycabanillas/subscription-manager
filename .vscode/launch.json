@@ -14,10 +14,7 @@
                 "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
                 "uriFormat": "%s/scalar/"
             },
-            "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
-            },
-            "launchSettingsProfile": null,
+            "launchSettingsProfile": "Development"
         },
         {
             "name": ".NET Core Attach",

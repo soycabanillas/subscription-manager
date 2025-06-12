@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useAuthStore } from './stores/auth-store'
+import LoginPage from './pages/LoginPage'
+import DashboardPage from './pages/DashboardPage'
+import CustomersPage from './pages/CustomersPage'
+import { DashboardLayout } from './components/layout/DashboardLayout'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router'
+
+function ProtectedRoute({ children }: { children: React.ReactNode }) {
+  const { isAuthenticated } = useAuthStore()
+  return isAuthenticated ? <>{children}</> : <Navigate to="/login" />
+}
+
+const router = createBrowserRouter([
+  {
+    path: "/login",
+    element: <LoginPage />
+  },
+  {
+    path: "/",
+    element: <Navigate to="/dashboard" />
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout>
+          <DashboardPage />
+        </DashboardLayout>
+      </ProtectedRoute>
+    )
+  },
+  {
+    path: "/customers",
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout>
+          <CustomersPage />
+        </DashboardLayout>
+      </ProtectedRoute>
+    )
+  }
+])
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank" rel="noreferrer noopener">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer noopener">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button type="button" onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App

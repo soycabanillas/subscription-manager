@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0-preview.4.25258.110" />
     <PackageReference Include="Scalar.AspNetCore" Version="2.4.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.0-preview.4.25258.110" />
   </ItemGroup>
 
   <ItemGroup>

@@ -14,6 +14,15 @@
             "options": {
                 "cwd": "${workspaceFolder}/backend"
             },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "revealProblems": "onProblem",
+                "focus": false,
+                "panel": "shared",
+                "group": "build",
+                "clear": true
+            },
             "problemMatcher": "$msCompile"
         },
         {
@@ -29,6 +38,15 @@
             "options": {
                 "cwd": "${workspaceFolder}/backend"
             },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "revealProblems": "onProblem",
+                "focus": false,
+                "panel": "shared",
+                "group": "publish",
+                "clear": true
+            },
             "problemMatcher": "$msCompile"
         },
         {
@@ -40,14 +58,21 @@
                 "run",
                 "--project",
                 "${workspaceFolder}/backend/Backend.csproj",
-                "--no-launch-profile",
+                "--launch-profile",
+                "Development",
                 "--verbose"
             ],
             "options": {
                 "cwd": "${workspaceFolder}/backend",
-                "env": {
-                    "ASPNETCORE_ENVIRONMENT": "Development"
-                }
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "revealProblems": "onProblem",
+                "focus": false,
+                "panel": "shared",
+                "group": "watch",
+                "clear": true
             },
             "problemMatcher": {
                 "base": "$msCompile",
@@ -70,13 +95,48 @@
                 "run",
                 "--project",
                 "${workspaceFolder}/backend/Backend.csproj",
+                "--launch-profile",
+                "Development"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/backend"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "revealProblems": "onProblem",
+                "focus": false,
+                "panel": "shared",
+                "group": "run",
+                "clear": true,
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "run no profile",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "run",
+                "--project",
+                "${workspaceFolder}/backend/Backend.csproj",
                 "--no-launch-profile"
             ],
             "options": {
                 "cwd": "${workspaceFolder}/backend",
                 "env": {
-                    "ASPNETCORE_ENVIRONMENT": "Development"
+                    "ASPNETCORE_ENVIRONMENT": "Development",
+                    "ASPNETCORE_URLS": "http://localhost:5100;https://localhost:5101"
                 }
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "revealProblems": "onProblem",
+                "focus": false,
+                "panel": "shared",
+                "group": "run",
+                "clear": true
             },
             "problemMatcher": "$msCompile"
         }
