@@ -21,7 +21,7 @@
 			"nodeGypDependencies": true,
 			"installYarnUsingApt": true,
 			"version": "lts",
-			"pnpmVersion": "latest",
+			"npmVersion": "latest",
 			"nvmVersion": "latest"
 		}
 	},

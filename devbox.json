@@ -14,7 +14,7 @@
       "echo ''",
       "echo '📦 Available Tools:'",
       "echo '  Node.js:' $(node --version)",
-      "echo '  pnpm:' $(pnpm --version)",
+      "echo '  npm:' $(npm --version)",
       "echo '  dotnet:' $(dotnet --version)",
       "echo '  act:' $(act --version)",
       "echo ''",
@@ -25,7 +25,7 @@
       "# Auto-setup if needed",
       "if [ -f frontend/package.json ] && [ ! -d frontend/node_modules ]; then",
       "  echo '📥 Installing frontend dependencies...'",
-      "  cd frontend && pnpm install && cd ..",
+      "  cd frontend && npm install && cd ..",
       "fi"
     ],
     "scripts": {
@@ -38,12 +38,12 @@
         "# Start frontend",
         "cd frontend",
         "echo '⚡ Starting frontend...'",
-        "pnpm dev",
+        "npm run dev",
         "# Cleanup on exit",
         "trap 'kill $BACKEND_PID' EXIT"
       ],
       "frontend": [
-        "cd frontend && pnpm dev"
+        "cd frontend && npm run dev"
       ],
       "backend": [
         "cd backend && dotnet run"
@@ -51,14 +51,14 @@
       "build": [
         "echo '🏗️  Building project...'",
         "cd frontend",
-        "pnpm build",
+        "npm run build",
         "cd ../backend",
         "dotnet build --configuration Release",
         "echo '✅ Build complete!'"
       ],
       "test": [
         "echo '🧪 Running tests...'",
-        "cd frontend && pnpm test",
+        "cd frontend && npm test",
         "cd ../backend && dotnet test"
       ],
       "clean": [
@@ -69,7 +69,7 @@
       ],
       "format": [
         "echo '💅 Formatting code...'",
-        "cd frontend && pnpm prettier --write .",
+        "cd frontend && npm run prettier --write .",
         "cd ../backend && dotnet format",
         "echo '✅ Formatting complete!'"
       ]
