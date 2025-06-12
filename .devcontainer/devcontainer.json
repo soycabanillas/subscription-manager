@@ -1,0 +1,74 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/docker-outside-of-docker
+{
+	"name": "Docker outside of Docker",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
+	"features": {
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+			"version": "latest",
+			"enableNonRootDocker": "true",
+			"moby": "true"
+		},
+		"ghcr.io/devcontainers/features/dotnet:2": {
+			"version": "10.0.100-preview.4.25258.110"
+		},
+		"ghcr.io/devcontainers/features/nix:1": {
+			"multiUser": true,
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/node:1": {
+			"nodeGypDependencies": true,
+			"installYarnUsingApt": true,
+			"version": "lts",
+			"pnpmVersion": "latest",
+			"nvmVersion": "latest"
+		}
+	},
+	// Use this environment variable if you need to bind mount your local source code into a new container.
+	"remoteEnv": {
+		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+	},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [
+		3000,
+		5100,
+		5101
+	],
+	"portsAttributes": {
+		"3000": {
+			"label": "react app",
+			"onAutoForward": "openBrowser",
+			"requireLocalPort": true,
+			"protocol": "http"
+		},
+		"5100": {
+			"label": "net core http",
+			"onAutoForward": "openBrowser",
+			"requireLocalPort": true,
+			"protocol": "http"
+		},
+		"5101": {
+			"label": "net core https",
+			"onAutoForward": "openBrowser",
+			"requireLocalPort": true,
+			"protocol": "https"
+		}
+	},
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "docker --version",
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"settings": {},
+			"extensions": [
+				"jetpack-io.devbox",
+				"ms-dotnettools.csdevkit",
+				"bradlc.vscode-tailwindcss",
+				"github.vscode-github-actions"
+			]
+		}
+	}
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
