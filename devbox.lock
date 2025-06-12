@@ -1,6 +1,117 @@
 {
   "lockfile_version": "1",
   "packages": {
+    "act@latest": {
+      "last_modified": "2025-06-05T08:10:37Z",
+      "resolved": "github:NixOS/nixpkgs/ec62ae342c340d24289735e31eb9155261cd5fe7#act",
+      "source": "devbox-search",
+      "version": "0.2.78",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/gmwb5nb910r0g11wphyhcgkkb73cyz4g-act-0.2.78",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/gmwb5nb910r0g11wphyhcgkkb73cyz4g-act-0.2.78"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/3h6w4yyv6krgiwvy7kfm2f7hm1h5z8sv-act-0.2.78",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/3h6w4yyv6krgiwvy7kfm2f7hm1h5z8sv-act-0.2.78"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/2ldaxvizvd4130rjsnn0dm4xnsvjq2wz-act-0.2.78",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/2ldaxvizvd4130rjsnn0dm4xnsvjq2wz-act-0.2.78"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/nnjly4y9m3mssv7g1l151bwmbs294qlk-act-0.2.78",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/nnjly4y9m3mssv7g1l151bwmbs294qlk-act-0.2.78"
+        }
+      }
+    },
+    "dotnet-sdk_10@latest": {
+      "last_modified": "2025-05-24T21:46:02Z",
+      "resolved": "github:NixOS/nixpkgs/edb3633f9100d9277d1c9af245a4e9337a980c07#dotnet-sdk_10",
+      "source": "devbox-search",
+      "version": "10.0.100-preview.4.25258.110",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/gl7yay7cwgp3vbf80rqijwrsiyi5cfs9-dotnet-sdk-wrapped-10.0.100-preview.4.25258.110",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/krmnx4kz504fsm06fwx4bc4h7fvq5s7x-dotnet-sdk-wrapped-10.0.100-preview.4.25258.110-man",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/gl7yay7cwgp3vbf80rqijwrsiyi5cfs9-dotnet-sdk-wrapped-10.0.100-preview.4.25258.110"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/g4ds4jzc7hyrgg9y9qp32l2nqb9bppkv-dotnet-sdk-wrapped-10.0.100-preview.4.25258.110",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/ncghh0yk10ifms2xv6mcyd07d9vrq0fz-dotnet-sdk-wrapped-10.0.100-preview.4.25258.110-man",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/g4ds4jzc7hyrgg9y9qp32l2nqb9bppkv-dotnet-sdk-wrapped-10.0.100-preview.4.25258.110"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/56dmmy1jja4p6d426hrkwhxpjvw50d47-dotnet-sdk-wrapped-10.0.100-preview.4.25258.110",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/56dmmy1jja4p6d426hrkwhxpjvw50d47-dotnet-sdk-wrapped-10.0.100-preview.4.25258.110"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/vkp61kz1jbqqg1sqqra047mkb3fwxgpq-dotnet-sdk-wrapped-10.0.100-preview.4.25258.110",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/0fnarldkkprgqkaz8y1am0nzvkqx6xjb-dotnet-sdk-wrapped-10.0.100-preview.4.25258.110-man",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/vkp61kz1jbqqg1sqqra047mkb3fwxgpq-dotnet-sdk-wrapped-10.0.100-preview.4.25258.110"
+        }
+      }
+    },
     "github:NixOS/nixpkgs/nixpkgs-unstable": {
       "last_modified": "2025-06-06T12:35:49Z",
       "resolved": "github:NixOS/nixpkgs/a4ff0e3c64846abea89662bfbacf037ef4b34207?lastModified=1749213349&narHash=sha256-UAaWOyQhdp7nXzsbmLVC67fo%2BQetzoTm9hsPf9X3yr4%3D"

@@ -1,34 +1,78 @@
 {
-    "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.14.2/.schema/devbox.schema.json",
-    "env": {
-      "DEVBOX_COREPACK_ENABLED": "true"
-    },
-    "packages": [
-      "nodejs@20.11.1"
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.14.2/.schema/devbox.schema.json",
+  "env": {
+    "DEVBOX_COREPACK_ENABLED": "true"
+  },
+  "packages": [
+    "nodejs@20.11.1",
+    "act@latest",
+    "dotnet-sdk_10@latest"
+  ],
+  "shell": {
+    "init_hook": [
+      "echo '🚀 Development Environment Ready!'",
+      "echo ''",
+      "echo '📦 Available Tools:'",
+      "echo '  Node.js:' $(node --version)",
+      "echo '  pnpm:' $(pnpm --version)",
+      "echo '  dotnet:' $(dotnet --version)",
+      "echo '  act:' $(act --version)",
+      "echo ''",
+      "# Set up environment variables",
+      "export NODE_OPTIONS='--max-old-space-size=4096'",
+      "export BROWSER=none",
+      "",
+      "# Auto-setup if needed",
+      "if [ -f frontend/package.json ] && [ ! -d frontend/node_modules ]; then",
+      "  echo '📥 Installing frontend dependencies...'",
+      "  cd frontend && pnpm install && cd ..",
+      "fi"
     ],
-    "shell": {
-      "init_hook": [
-        "echo '🚀 Dashboard Development Environment Ready!'",
-        "echo ''",
-        "echo '📦 Available Tools:'",
-        "echo '  Node.js:' $(node --version)",
-        "echo '  pnpm:' $(pnpm --version)",
-        "echo ''",
-        "# Set up environment variables",
-        "export NODE_OPTIONS='--max-old-space-size=4096'",
-        "export BROWSER=none",
-        "",
-        "# Auto-setup if needed",
-        "if [ -f frontend/package.json ] && [ ! -d frontend/node_modules ]; then",
-        "  echo '📥 Installing frontend dependencies...'",
-        "  cd frontend && pnpm install && cd ..",
-        "fi"
+    "scripts": {
+      "dev": [
+        "echo '🚀 Starting development servers...'",
+        "# Start backend in background",
+        "cd backend && dotnet run &",
+        "BACKEND_PID=$!",
+        "echo '🔧 Backend started (PID: $BACKEND_PID)'",
+        "# Start frontend",
+        "cd frontend",
+        "echo '⚡ Starting frontend...'",
+        "pnpm dev",
+        "# Cleanup on exit",
+        "trap 'kill $BACKEND_PID' EXIT"
       ],
-      "scripts": {
-        "test": [
-          "echo \"Error: no test specified\" && exit 1"
-        ]
-      }
+      "frontend": [
+        "cd frontend && pnpm dev"
+      ],
+      "backend": [
+        "cd backend && dotnet run"
+      ],
+      "build": [
+        "echo '🏗️  Building project...'",
+        "cd frontend",
+        "pnpm build",
+        "cd ../backend",
+        "dotnet build --configuration Release",
+        "echo '✅ Build complete!'"
+      ],
+      "test": [
+        "echo '🧪 Running tests...'",
+        "cd frontend && pnpm test",
+        "cd ../backend && dotnet test"
+      ],
+      "clean": [
+        "echo '🧹 Cleaning project...'",
+        "rm -rf frontend/node_modules",
+        "rm -rf backend/bin backend/obj",
+        "echo '✅ Clean complete!'"
+      ],
+      "format": [
+        "echo '💅 Formatting code...'",
+        "cd frontend && pnpm prettier --write .",
+        "cd ../backend && dotnet format",
+        "echo '✅ Formatting complete!'"
+      ]
     }
   }
-  
+}
