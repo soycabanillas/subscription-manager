@@ -45,6 +45,7 @@ devbox run fronten       # Run frontend only
  devbox run test         # Run frontend and backend tests
  devbox run clean        # Remove build artifacts and node_modules
  devbox run format       # Format code (Prettier + dotnet format)
+ devbox run ci           # Emulate GitHub Actions locally with act
 ```
 
 ## Project Structure

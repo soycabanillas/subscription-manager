@@ -72,6 +72,10 @@
         "cd frontend && npm run prettier --write .",
         "cd ../backend && dotnet format",
         "echo '✅ Formatting complete!'"
+      ],
+      "ci": [
+        "echo '🕹️ Running GitHub Actions locally with act...'",
+        "act --verbose"
       ]
     }
   }
