@@ -2,7 +2,8 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "backend - build",
+            "detail": "dotnet",
             "command": "dotnet",
             "type": "process",
             "args": [
@@ -26,7 +27,8 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "publish",
+            "label": "backend - publish",
+            "detail": "dotnet",
             "command": "dotnet",
             "type": "process",
             "args": [
@@ -50,7 +52,8 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "watch",
+            "label": "backend - watch",
+            "detail": "dotnet",
             "command": "dotnet",
             "type": "process",
             "args": [
@@ -63,7 +66,7 @@
                 "--verbose"
             ],
             "options": {
-                "cwd": "${workspaceFolder}/backend",
+                "cwd": "${workspaceFolder}/backend"
             },
             "presentation": {
                 "echo": true,
@@ -88,7 +91,8 @@
             }
         },
         {
-            "label": "run",
+            "label": "backend - run",
+            "detail": "dotnet",
             "command": "dotnet",
             "type": "process",
             "args": [
@@ -108,12 +112,13 @@
                 "focus": false,
                 "panel": "shared",
                 "group": "run",
-                "clear": true,
+                "clear": true
             },
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "run no profile",
+            "label": "backend - run no profile",
+            "detail": "dotnet",
             "command": "dotnet",
             "type": "process",
             "args": [
@@ -139,6 +144,26 @@
                 "clear": true
             },
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "frontend - watch",
+            "detail": "vite",
+            "type": "npm",
+            "script": "dev",
+            "path": "frontend",
+            "problemMatcher": []
+        },
+        {
+            "label": "watch-all",
+            "detail": "Run all watch tasks in parallel",
+            "dependsOn": [
+                "backend - watch",
+                "frontend - watch"
+            ],
+            "dependsOrder": "parallel",
+            "runOptions": {
+                "instanceLimit": 1
+            }
         }
     ]
 }
